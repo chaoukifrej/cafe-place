@@ -1,0 +1,383 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* VARIABLES */
+$colorRed: rgb(207, 15, 15);
+$colorOrange: rgb(233, 155, 12);
+$colorGreen: rgb(6, 138, 6);
+$colorBlue: rgb(74, 74, 223);
+$bgColor: #ffffff;
+$formBgColor: #4f5d75;
+$windowBgColor: whitesmoke;
+$topWindowColor: #2d3142;
+$colorSecond: #ef8354;
+$textColor: whitesmoke;
+
+body {
+  overflow: hidden;
+  background-color: $bgColor;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Main Container */
+.mainContainer {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 250px 5fr;
+}
+
+/* FORMULAIRE */
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 25px;
+  height: 100%;
+  color: $textColor;
+  background-color: $formBgColor;
+  h1 {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-top: 10px;
+    color: $colorSecond;
+  }
+  span {
+    font-size: 1.5rem;
+    &::before {
+      content: "→";
+      font-size: 2.3rem;
+    }
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    div {
+      display: flex;
+      flex-direction: column;
+      input {
+        margin: 5px 0 15px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        font-size: 1em;
+        background-color: $windowBgColor;
+        box-sizing: border-box;
+        border: 2px solid transparent;
+        &:focus {
+          outline: none;
+          border: 2px solid $colorSecond;
+        }
+      }
+      select {
+        margin: 5px 0 15px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: white;
+        font-size: 1em;
+        background-color: $windowBgColor;
+        border: 2px solid transparent;
+        cursor: pointer;
+        &:focus {
+          outline: none;
+          border: 2px solid $colorSecond;
+        }
+      }
+      button {
+        margin: 15px 0;
+        font-size: 1rem;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        &:hover {
+          color: $colorSecond;
+          transition-duration: 200ms;
+        }
+        &:active {
+          transform: scale(0.98);
+          box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+          transition-duration: 200ms;
+        }
+        &:focus {
+          outline: none;
+          border: 2px solid $colorSecond;
+          color: $colorSecond;
+        }
+      }
+    }
+  }
+  p {
+    font-size: 0.8rem;
+    text-align: end;
+    margin: 10px;
+  }
+  .popUp {
+    background-color: $colorRed;
+    border-radius: 5px;
+    box-sizing: border-box;
+    height: 70px;
+    p {
+      text-align: left;
+      font-size: 1.1rem;
+      margin: 5px 15px;
+      span {
+        font-size: 1.1rem;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}
+
+/* CONTAINER PRODUITS */
+
+.stockContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.windowProduits {
+  height: 90vh;
+  width: 90%;
+  overflow-y: auto;
+  background-color: $windowBgColor;
+  border-radius: 5px;
+}
+
+/* ScrollBar */
+.windowProduits::-webkit-scrollbar {
+  width: 10px;
+  background-color: $bgColor;
+  border-radius: 1px;
+}
+.windowProduits::-webkit-scrollbar-track {
+  background-color: $bgColor;
+  border-radius: 1px 50% 50% 1px;
+}
+.windowProduits::-webkit-scrollbar-thumb {
+  background-color: rgb(228, 228, 228);
+  border-radius: 5px;
+}
+
+/* Barre de titre */
+.barreProduits {
+  position: sticky;
+  height: 25px;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: $topWindowColor;
+  border-radius: 5px 5px 0 0;
+  padding: 5px;
+  input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    color: $textColor;
+    background-color: $formBgColor;
+    border: 1px solid transparent;
+    &:focus {
+      outline: none;
+      border: 1px solid $colorSecond;
+    }
+    &::placeholder {
+      color: rgb(165, 165, 165);
+    }
+  }
+  select {
+    padding-left: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    background-color: $formBgColor;
+    border: 1px solid transparent;
+    color: $textColor;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+/* en tete tableau */
+.produitsHead {
+  position: sticky;
+  height: 30px;
+  top: 35px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr repeat(6, 4fr);
+  align-items: center;
+  justify-items: center;
+  color: $textColor;
+  background-color: $formBgColor;
+  border-left: 5px solid transparent;
+}
+/* DIV pour chaque produit (tableau) */
+#produits {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  div {
+    background-color: rgb(228, 228, 228);
+    height: 65px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr repeat(6, 4fr);
+    align-items: center;
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.3);
+    &:nth-child(odd) {
+      background-color: whitesmoke;
+    }
+  }
+  input[type="checkbox"] {
+    margin-left: 15px;
+    background-color: unset;
+    height: 22px;
+    width: 22px;
+    appearance: unset;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #ccc;
+      transition-duration: 0.1s;
+    }
+    &:checked {
+      background-color: $colorBlue;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+      cursor: pointer;
+      margin: 3px;
+      height: 20px;
+      width: 20px;
+      transform: scale(1.1);
+      justify-self: start;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  /* Bouton de suppresion si quantité 0 */
+  .eraseBtn {
+    font-size: 0.9rem;
+    height: 25px;
+    padding: 1px 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    justify-self: center;
+    background-color: rgba(207, 15, 15, 0.8);
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: $colorRed;
+      transition-duration: 200ms;
+    }
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+      transition-duration: 200ms;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid $colorRed;
+    }
+  }
+  .btnEnd button {
+    width: 80px;
+    height: 25px;
+    &:hover {
+      opacity: 0.7;
+      transition-duration: 0.2s;
+    }
+  }
+
+  /* Div Modification */
+  .modification {
+    grid-template-columns: repeat(6, 1fr) !important;
+    background-color: rgb(209, 105, 105) !important;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(209, 105, 105) !important;
+      input {
+        margin: 0;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        &:focus {
+          outline: none;
+          border: 1px solid $colorBlue;
+        }
+      }
+    }
+    button {
+      font-size: 0.9rem;
+      padding: 0 15px;
+      height: 30px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      justify-self: center;
+      &:hover {
+        color: $colorRed;
+        transition-duration: 200ms;
+      }
+      &:active {
+        transform: scale(0.98);
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        transition-duration: 200ms;
+      }
+      &:focus {
+        outline: none;
+        border: 1px solid $colorRed;
+        color: $colorRed;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .mainContainer {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 200px 5fr;
+  }
+  .formContainer {
+    width: 150px;
+    margin: 0;
+  }
+  .windowProduits {
+    width: 98%;
+    margin: 0;
+    font-size: 0.8em;
+  }
+  .produitsHead {
+    height: 50px;
+  }
+}
+
+/* JS - DO NOT REMOVE */
+
+.displayNone {
+  display: none !important;
+}

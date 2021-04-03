@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Le Café de la place - Gestion de stock</title>
+</head>
+
+<body>
+  <div class="mainContainer">
+    <!-- FORMULAIRE INPUTS -->
+    <div class="formContainer">
+      <h1>Gestion<br><span>de Stock</span></h1>
+      <div>
+        <div>
+          <label for="nom">Nom du produit</label>
+          <input class="inputs" type="text" name="nom" id="nom">
+        </div>
+
+        <div>
+          <label for="quantite">Quantité</label>
+          <input class="inputs" type="number" name="quantite" id="quantite" min="0" max="1000">
+        </div>
+
+        <div>
+          <label for="prixAchatHT">Prix d'achat HT</label>
+          <input class="inputs" type="number" name="prixAchatHT" id="prixAchatHT" min="0" step="0.01">
+        </div>
+
+        <div>
+          <label for="prixVenteHT">Prix de vente HT</label>
+          <input class="inputs" type="number" name="prixVenteHT" id="prixVenteHT" min="0" step="0.01">
+        </div>
+
+        <div>
+          <label for="typeProduit">Type de produit</label>
+          <select name="typeProduit" id="typeProduit">
+            <option value="boissonSoft">Boisson non alcoolisée</option>
+            <option value="boissonHard">Boisson alcoolisée</option>
+            <option value="autres">Autres</option>
+          </select>
+        </div>
+
+        <div id="inputDegre" class="displayNone">
+          <label for="degreAlcool">Degré Alcool</label>
+          <input type="number" name="degreAlcool" id="degreAlcool" min="0" max="100" step="0.1">
+        </div>
+
+        <div>
+          <button id="btnAjout">Ajouter Produit</button>
+        </div>
+        <div class="popUp" id="popup">
+        </div>
+      </div>
+      <p>&copy;Le Café de la Place 2021</p>
+    </div>
+
+    <!-- CONTAINER DES PRODUITS -->
+    <div class="stockContainer">
+      <div class="windowProduits">
+        <div class="barreProduits">
+          <input id="rechercher" type="text" placeholder="Rechercher">
+          <select name="typeProd" id="typeProd">
+            <option value="all">Tout les produits</option>
+            <option value="boissonSoft">Boisson non alcoolisée</option>
+            <option value="boissonHard">Boisson alcoolisée</option>
+            <option value="autres">Autres</option>
+          </select>
+        </div>
+        <div class="produitsHead">
+          <p></p>
+          <p>Nom</p>
+          <p>Quantité</p>
+          <p></p>
+          <p>Prix d'achat HT</p>
+          <p>Marge HT</p>
+          <p>Prix de vente HT</p>
+          <p>Prix de vente TTC</p>
+          <p>Type de produit</p>
+          <p>Qr code</p>
+        </div>
+        <div id="produits">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+    integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+    crossorigin="anonymous"></script>
+  <script src="variable.js"></script>
+  <script src="class.js"></script>
+  <script src="functions.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
