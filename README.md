@@ -1,6 +1,9 @@
 # cafe-place
 > 2eme projet formation Bocal Academy JS Vanilla
 
+
+![Screenshot](capture-site.png)
+***
 ## Objectifs:
 
     Maniupler le DOM
@@ -37,3 +40,4 @@ BONUS: Générer un QRCode pour chaque produit contenant sa référence.
 * une **fonction de tri** des produits selon leurs types
 * Utilisation d'une class abstraite Boisson et de 3 class qui extends Boisson
 * Utilisation du **Local Storage pour stocker le tableau des produits**
+
