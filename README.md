@@ -1,3 +1,5 @@
+[Voir le site](https://cafeplace.netlify.app/)
+
 # cafe-place
 > 2eme projet formation Bocal Academy JS Vanilla
 
